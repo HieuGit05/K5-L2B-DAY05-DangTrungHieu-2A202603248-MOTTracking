@@ -1,4 +1,4 @@
-# Báo cáo cá nhân — Dang Trung Hieu — 2A202603248
+# Báo cáo cá nhân — Đặng Trung Hiếu — 2A202603248
 
 Đoạn video: MOT17-09, 150 frame (frame 1–150), nguồn MOTChallenge, giấy phép CC BY-NC-SA 3.0.
 
