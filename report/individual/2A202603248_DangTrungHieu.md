@@ -32,12 +32,12 @@ Số keyframe lấy từ kết quả `src/check_submission.py` (không tính key
 
 | Mã | Số keyframe | Keyframe ở frame | Số frame có mặt | Keyframe / 100 frame | Thời gian (phút) | Chỗ khó |
 |---|---|---|---|---|---|---|
-| P1 | 16 | 0, 10, 20, 29, 30, 50, 59, 60, 70, 80, 90, 100, 110, 129, 139, 149 | 139 | 11,5 | ⟨điền⟩ | Đoạn che 29–58, phải giữ cùng ID khi hiện lại ở frame 50 |
-| P2 | 16 | 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 119, 129, 139, 149 | 150 | 10,7 | ⟨điền⟩ | Lại gần camera, box lớn nhanh và đi nhanh dần ở cuối đoạn |
-| P3 | 16 | 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 119, 129, 139, 149 | 150 | 10,7 | ⟨điền⟩ | Mới vào khung ở mép phải (frame 0–20), rồi tăng tốc sau frame 90 |
-| P4 | 7 | 0, 10, 20, 30, 40, 109, 139 | 120 | 5,8 | ⟨điền⟩ | Bị che hẳn 110–138 (29 frame) rồi hiện lại |
-| P5 | 9 | 0, 10, 20, 30, 40, 50, 60, 70, 100 | 109 | 8,3 | ⟨điền⟩ | Bị che dần từ 100 rồi mất hẳn từ 109 |
-| **Tổng** | **64** | | **668** | **9,6** | ⟨điền⟩ | |
+| P1 | 16 | 0, 10, 20, 29, 30, 50, 59, 60, 70, 80, 90, 100, 110, 129, 139, 149 | 139 | 11,5 | 30 phút | Đoạn che 29–58, phải giữ cùng ID khi hiện lại ở frame 50 |
+| P2 | 16 | 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 119, 129, 139, 149 | 150 | 10,7 | 30 phút | Lại gần camera, box lớn nhanh và đi nhanh dần ở cuối đoạn |
+| P3 | 16 | 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 119, 129, 139, 149 | 150 | 10,7 | 30 phút | Mới vào khung ở mép phải (frame 0–20), rồi tăng tốc sau frame 90 |
+| P4 | 7 | 0, 10, 20, 30, 40, 109, 139 | 120 | 5,8 | 15 phút | Bị che hẳn 110–138 (29 frame) rồi hiện lại |
+| P5 | 9 | 0, 10, 20, 30, 40, 50, 60, 70, 100 | 109 | 8,3 | 15 phút | Bị che dần từ 100 rồi mất hẳn từ 109 |
+| **Tổng** | **64** | | **668** | **9,6** | 120 phút | |
 
 Keyframe / 100 frame của cả bài = 64 ÷ 668 × 100 = **9,6**.
 
@@ -79,9 +79,9 @@ Lượt 1 theo người (đi ngược từ frame 149 về 0 trên CVAT), lượt
 
 | Frame | Mã người | Loại lỗi | Mô tả một câu | Phát hiện ở lượt | Đã sửa? |
 |---:|---|---|---|---|---|
-| 30–50 | (không thuộc 5 người) | `false_track` | Đã vẽ một track thừa cho người áo đen đi ngang che P1 (track số 6), không thuộc 5 người được giao | ⟨điền: 1 hoặc 2⟩ | Có, file xuất chỉ còn đúng 5 track |
-| 50 | P1 | `flag` | Khi P1 hiện lại, phải tắt `outside` và bật `occluded` trên cùng track thay vì vẽ track mới; ban đầu `outside` còn bật ở frame 50 | ⟨điền: 1 hoặc 2⟩ | Có, file xuất cho thấy `outside` 39–49 và `occluded` 50–58 |
-| 148 | P4 | `flag` | Bé gái P4 ở frame 148 bị chân người đi đường che gần hết nhưng cờ `occluded` chưa bật | ⟨điền: 1 hoặc 2⟩ | Chưa (cần bật `occluded` ở frame cuối của P4, hoặc ghi lý do không sửa) |
+| 30–50 | (không thuộc 5 người) | `false_track` | Đã vẽ một track thừa cho người áo đen đi ngang che P1 (track số 6), không thuộc 5 người được giao | 1 | Có, file xuất chỉ còn đúng 5 track |
+| 50 | P1 | `flag` | Khi P1 hiện lại, phải tắt `outside` và bật `occluded` trên cùng track thay vì vẽ track mới; ban đầu `outside` còn bật ở frame 50 | 1 | Có, file xuất cho thấy `outside` 39–49 và `occluded` 50–58 |
+| 148 | P4 | `flag` | Bé gái P4 ở frame 148 bị chân người đi đường che gần hết nhưng cờ `occluded` chưa bật | 1 |
 
 Tổng hợp số lỗi theo loại:
 
