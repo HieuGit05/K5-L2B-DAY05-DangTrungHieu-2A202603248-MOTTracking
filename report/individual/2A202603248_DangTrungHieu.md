@@ -23,7 +23,7 @@ Năm người của đề B (theo `src/lab_variants.json`: ID gốc 1, 19, 20, 2
 | P1 | 0 | 149 | ~100: đổi từ đi sang phải sang quay lại phía trái và tiến gần camera (cao box 294 → 359 px) | 29–38 che một phần; 39–49 che hẳn; 50–58 che một phần | Người mặc đồ tối trong cửa hàng Vodafone, bị người áo đen đi ngang che (người này không thuộc 5 người, không gán). Bài test che khuất CP2 |
 | P2 | 0 | 149 | Tăng tốc dần; nhanh hẳn từ ~90–110 (vx −3,9 → −7,2 px/frame) | Không bị che | Bà áo xanh lá, túi đen, đi từ mép phải về trái và lại gần camera (cao box 346 → 850 px) nên box đổi kích thước nhiều |
 | P3 | 0 | 149 | 0–20: vào khung rất nhanh (cao box 168 → 429 px); ~90: tăng tốc (vx −1,3 → −5,9) | 0–29 che một phần (mới vào khung từ mép phải, chỉ thấy một phần) | Ông áo xanh dương, xuất hiện ở mép phải khung |
-| P4 | 0 | 148 | Đi chậm sang phải đến ~40, rồi đứng yên (40–100) | 109 che một phần; 110–138 che hẳn; hiện lại ở 139 | Bé gái nhỏ (cao box ~125 px), bị P2 đi ngang che |
+| P4 | 0 | 147 | Đi chậm sang phải đến ~40, rồi đứng yên (40–100) | 109 che một phần; 110–138 che hẳn; hiện lại ở 139; từ 148 bị chân người đi đường che hẳn | Bé gái nhỏ (cao box ~125 px), bị P2 đi ngang che |
 | P5 | 0 | 108 | Đi sang phải đến ~20, gần như đứng yên từ ~40 | 100–108 che một phần; 109–149 che hẳn, không hiện lại | Phụ nữ túi hồng đứng cạnh bé gái, bị người đi đường che hẳn từ frame 109 |
 
 ## 2. Keyframe và thời gian (CP1, CP4)
@@ -35,11 +35,11 @@ Số keyframe lấy từ kết quả `src/check_submission.py` (không tính key
 | P1 | 16 | 0, 10, 20, 29, 30, 50, 59, 60, 70, 80, 90, 100, 110, 129, 139, 149 | 139 | 11,5 | 30 phút | Đoạn che 29–58, phải giữ cùng ID khi hiện lại ở frame 50 |
 | P2 | 16 | 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 119, 129, 139, 149 | 150 | 10,7 | 30 phút | Lại gần camera, box lớn nhanh và đi nhanh dần ở cuối đoạn |
 | P3 | 16 | 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 119, 129, 139, 149 | 150 | 10,7 | 30 phút | Mới vào khung ở mép phải (frame 0–20), rồi tăng tốc sau frame 90 |
-| P4 | 7 | 0, 10, 20, 30, 40, 109, 139 | 120 | 5,8 | 15 phút | Bị che hẳn 110–138 (29 frame) rồi hiện lại |
+| P4 | 7 | 0, 10, 20, 30, 40, 109, 139 | 119 | 5,9 | 15 phút | Bị che hẳn 110–138 (29 frame) rồi hiện lại |
 | P5 | 9 | 0, 10, 20, 30, 40, 50, 60, 70, 100 | 109 | 8,3 | 15 phút | Bị che dần từ 100 rồi mất hẳn từ 109 |
-| **Tổng** | **64** | | **668** | **9,6** | 120 phút | |
+| **Tổng** | **64** | | **667** | **9,6** | 120 phút | |
 
-Keyframe / 100 frame của cả bài = 64 ÷ 668 × 100 = **9,6**.
+Keyframe / 100 frame của cả bài = 64 ÷ 667 × 100 = **9,6**.
 
 Bạn đặt keyframe nhiều nhất ở người nào? Vì sao (người đó rẽ, dừng, lại gần camera hay bị che)?
 
@@ -81,7 +81,7 @@ Lượt 1 theo người (đi ngược từ frame 149 về 0 trên CVAT), lượt
 |---:|---|---|---|---|---|
 | 30–50 | (không thuộc 5 người) | `false_track` | Đã vẽ một track thừa cho người áo đen đi ngang che P1 (track số 6), không thuộc 5 người được giao | 1 | Có, file xuất chỉ còn đúng 5 track |
 | 50 | P1 | `flag` | Khi P1 hiện lại, phải tắt `outside` và bật `occluded` trên cùng track thay vì vẽ track mới; ban đầu `outside` còn bật ở frame 50 | 1 | Có, file xuất cho thấy `outside` 39–49 và `occluded` 50–58 |
-| 148 | P4 | `flag` | Bé gái P4 ở frame 148 bị chân người đi đường che gần hết nhưng cờ `occluded` chưa bật | 1 |
+| 148 | P4 | `flag` | Bé gái P4 ở frame 148 bị chân người đi đường che hẳn nhưng box vẫn còn hiện, thiếu cờ `outside` | 1 | Có, đã bật `outside` từ frame 148 và xuất lại file (P4 hết ở frame 147) |
 
 Tổng hợp số lỗi theo loại:
 
@@ -91,7 +91,7 @@ Tổng hợp số lỗi theo loại:
 
 Lỗi nào chỉ lượt 2 (theo cảnh) mới thấy, lượt 1 (theo người) không thấy? Vì sao?
 
-Lỗi `false_track` (track thừa cho người không được giao) dễ chỉ lộ ra ở lượt 2: khi nhìn cả cảnh, một box nằm trên người không thuộc 5 người hiện ngay ra, còn ở lượt 1 mình chỉ nhìn từng người đang theo dõi và không để ý các track khác. Ngược lại `drift` và `flag` của từng người dễ thấy hơn ở lượt 1 vì đi từng frame theo một người.
+Trong job của mình không có lỗi nào chỉ lượt 2 mới thấy: cả ba lỗi ở bảng trên đều được phát hiện ở lượt 1. Về nguyên tắc, những lỗi như `false_track` (box trên người không được giao) hoặc `merge` (một box bao hai người) dễ lộ ra ở lượt 2 hơn, vì khi nhìn cả cảnh thấy ngay box thừa hoặc box bao hai người, còn ở lượt 1 mình chỉ nhìn từng người đang theo dõi. Ngược lại `drift` và `flag` của từng người dễ thấy hơn ở lượt 1 vì đi từng frame theo một người.
 
 ## 5. File xuất và kết quả tự kiểm (CP4)
 
@@ -107,13 +107,13 @@ Tóm tắt in ra từ `src/check_submission.py`:
 
 ```text
 === File MOT 1.1: DangTrungHieu_mot.zip ===
-  Số track ID: 5   |   Tổng số box: 668
+  Số track ID: 5   |   Tổng số box: 667
   [OK]        Đúng 5 track ID.
 
   Track | Frame có mặt | Số frame | Đoạn vắng (outside)
       1 |   0–149      |      150 | -
       2 |   0–149      |      150 | -
-      3 |   0–148      |      120 | 110–138
+      3 |   0–147      |      119 | 110–138
       4 |   0–108      |      109 | -
       5 |   0–149      |      139 | 39–49
 
@@ -122,11 +122,11 @@ Tóm tắt in ra từ `src/check_submission.py`:
   Track | Nhãn   | Frame thấy | Keyframe | KF/100 frame | Frame occluded | Lần bật outside
       0 | person |        150 |       16 |         10.7 |              0 |               0
       1 | person |        150 |       16 |         10.7 |             30 |               0
-      2 | person |        120 |        7 |          5.8 |              1 |               2
+      2 | person |        119 |        7 |          5.9 |              1 |               2
       3 | person |        109 |        9 |          8.3 |              9 |               1
       4 | person |        139 |       16 |         11.5 |             19 |               1
 
-  Tổng: 64 keyframe / 668 frame có mặt = 9.6 keyframe / 100 frame
+  Tổng: 64 keyframe / 667 frame có mặt = 9.6 keyframe / 100 frame
   [OK]        Đọc được 5 track từ annotations.xml.
 
 === Tóm tắt ===
